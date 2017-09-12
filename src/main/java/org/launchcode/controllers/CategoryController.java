@@ -1,5 +1,6 @@
 package org.launchcode.controllers;
 
+import org.launchcode.models.Category;
 import org.launchcode.models.data.CategoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,14 +23,14 @@ public class CategoryController {
     public String index(Model model) {
 
         model.addAttribute("categories", categoryDao.findAll());
-
+        model.addAttribute("title","Categories");
         return "category/index";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String displayAddCategoriesForm(Model model) {
-        model.addAttribute("category", "Add Category");
-        model.addAttribute(new Category());
+    public String add(Model model) {
+        model.addAttribute("title", "Category");
+        model.addAttribute("category", new Category());
 
         return "category/add";
     }
@@ -38,12 +39,11 @@ public class CategoryController {
     public String add(Model model, @ModelAttribute @Valid Category category, Errors errors) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("category", "Add Category");
             return "/category/add";
         }
 
         categoryDao.save(category);
-        return "redirect";
+        return "redirect:";
     }
 
 }
