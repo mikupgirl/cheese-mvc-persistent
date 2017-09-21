@@ -10,7 +10,9 @@ public class addMenuItemForm {
     private Menu menu;
     private Iterable<Cheese> cheeses;
 
+    @NotNull
     private int menuId;
+    @NotNull
     private int cheeseId;
 
     public addMenuItemForm() {}
