@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
+
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
@@ -47,8 +48,8 @@ public class CheeseController {
     public String processAddCheeseForm(@ModelAttribute  @Valid Cheese newCheese,
                                        @RequestParam int categoryId, Errors errors, Model model) {
 
-        Category cat = categoryDao.findOne(categoryId);
-        newCheese.setCategory(cat);
+        Category category = categoryDao.findOne(categoryId);
+        newCheese.setCategory(category);
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
