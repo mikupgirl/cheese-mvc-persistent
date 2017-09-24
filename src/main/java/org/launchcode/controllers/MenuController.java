@@ -89,7 +89,7 @@ public class MenuController {
                           Errors errors) {
 
         if (errors.hasErrors()) {
-            return "menu/add-item/";
+            return "menu/add-item";
         }
 
         Menu menu = menuDao.findOne(menuItem.getMenuId());
@@ -98,7 +98,7 @@ public class MenuController {
         menu.addItem(cheese);
         menuDao.save(menu);
 
-        return "redirect:";
+        return "redirect:view/" + menu.getId();
 
     }
 }
