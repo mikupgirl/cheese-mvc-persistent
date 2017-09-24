@@ -86,9 +86,11 @@ public class MenuController {
 
     @RequestMapping(value = "add-item", method = RequestMethod.POST)
     public String addItem(@ModelAttribute @Valid addMenuItemForm menuItem,
-                          Errors errors) {
+                          Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+
+            model.addAttribute("title", "Add Item");
             return "menu/add-item";
         }
 
