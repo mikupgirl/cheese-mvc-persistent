@@ -48,7 +48,7 @@ public class MenuController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddMenuForm(@ModelAttribute  @Valid Menu newMenu,
-                                     Errors errors, Model model) {
+                                     Errors errors) {
 
         if (errors.hasErrors()) {
             return "menu/add";
@@ -98,7 +98,7 @@ public class MenuController {
         menu.addItem(cheese);
         menuDao.save(menu);
 
-        return "redirect:view/" + menu.getId();
+        return "redirect:";
 
     }
 }
